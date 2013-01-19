@@ -29,8 +29,8 @@ class StatHat(object):
 
     STATHAT_URL = DEFAULT_STATHAT_URL
 
-    def __init__(self, email=None):
-        self.email = email
+    def __init__(self, ezkey=None):
+        self.ezkey = ezkey
 
         # Enable keep-alive and connection-pooling.
         self.session = requests.session()
@@ -41,9 +41,9 @@ class StatHat(object):
         return r
 
     def value(self, key, value):
-        r = self._http_post('/ez', {'email': self.email, 'stat': key, 'value': value})
+        r = self._http_post('/ez', {'ezkey': self.ezkey, 'stat': key, 'value': value})
         return r.ok
 
     def count(self, key, count):
-        r = self._http_post('/ez', {'email': self.email, 'stat': key, 'count': count})
+        r = self._http_post('/ez', {'ezkey': self.ezkey, 'stat': key, 'count': count})
         return r.ok
